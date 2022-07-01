@@ -82,9 +82,18 @@ module Spotify
         #     position_ms: 0
         #   )
         #
-        #   # Play any Spotify URI. Albums, artists, tracks, playlists, and more.
+        #   # Play any Spotify track URI.
         #   device.play!(
         #     uri: "spotify:track:5MqkZd7a7u7N7hKMqquL2U",
+        #     position_ms: 0
+        #   )
+        #
+        #   # Play multiple Spotify track URIs.
+        #   device.play!(
+        #     uris: [
+        #       "spotify:track:5MqkZd7a7u7N7hKMqquL2U",
+        #       "spotify:track:43NzXURI2kqUYBxWyV6Ep9"
+        #     ],
         #     position_ms: 0
         #   )
         #
@@ -116,6 +125,9 @@ module Spotify
                       {context_uri: config[:context],
                        offset:      {position: config[:index]},
                        position_ms: config[:position_ms]}
+                    when %i[uris position_ms]
+                      {uris:        config[:uris],
+                      position_ms: config[:position_ms]}
                     when %i[uri position_ms]
                       {uris:        [config[:uri]],
                        position_ms: config[:position_ms]}
