@@ -18,7 +18,7 @@ module Spotify
       # @return [Spotify::SDK::Connect::PlaybackState] playback_state Return the playback state object.
       #
       def playback(market="from_token", override_opts={})
-        playback_state = send_http_request(:get, "/v1/me/player?market=%s" % market, override_opts)
+        playback_state = send_http_request(:get, "/v1/me/player?market=%s&additional_types=episode" % market, override_opts)
         Spotify::SDK::Connect::PlaybackState.new(playback_state, self)
       end
 
