@@ -9,6 +9,7 @@ require "rspec/collection_matchers"
 require "climate_control"
 
 require "simplecov"
+require "ostruct"
 
 # Code coverage.
 SimpleCov.start
